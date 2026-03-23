@@ -37,6 +37,7 @@ The bugs I found in the game are:
 
 - [ ] [Insert a screenshot of your fixed, winning game here]
 
+
 ## 🚀 Stretch Features
 
 - [ ] [If you choose to complete Challenge 4, insert a screenshot of your Enhanced Game UI here]

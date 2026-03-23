@@ -1,4 +1,4 @@
-from logic_utils import check_guess
+from logic_utils import check_guess, get_range_for_difficulty
 
 def test_winning_guess():
     # If the secret is 50 and guess is 50, it should be a win
@@ -26,3 +26,12 @@ def test_backwards_hints_fixed():
     outcome, message = check_guess(20, 50)
     assert outcome == "Too Low"
     assert "HIGHER" in message # This will fail if the AI is still lying to us!
+
+def test_get_range_for_difficulty():
+    # Target: Verify that the correct range is returned for each difficulty level
+    assert get_range_for_difficulty("Easy") == (1, 20)
+    assert get_range_for_difficulty("Normal") == (1, 100)
+    assert get_range_for_difficulty("Hard") == (1, 50)
+    
+    # Target: Verify it defaults to Normal range if an unknown string is passed
+    assert get_range_for_difficulty("Impossible") == (1, 100)

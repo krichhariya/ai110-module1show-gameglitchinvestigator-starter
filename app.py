@@ -1,16 +1,27 @@
 import random
 import streamlit as st
-from logic_utils import check_guess # New import added here!
+from logic_utils import check_guess, get_range_for_difficulty # New import added here!
 
-def get_range_for_difficulty(difficulty: str):
-    if difficulty == "Easy":
-        return 1, 20
-    if difficulty == "Normal":
-        return 1, 100
-    if difficulty == "Hard":
-        return 1, 50
-    return 1, 100
+# 1. Add this new callback function
+# FIX: Added a callback to reset the session state when the user changes the difficulty, generated via Copilot.
+def reset_on_difficulty_change():
+    new_diff = st.session_state.difficulty_selector
+    new_low, new_high = get_range_for_difficulty(new_diff)
+    
+    st.session_state.secret = random.randint(new_low, new_high)
+    st.session_state.attempts = 1
+    st.session_state.score = 0
+    st.session_state.history = []
+    st.session_state.status = "playing"
 
+# 2. Replace the old selectbox with this updated one
+difficulty = st.sidebar.selectbox(
+    "Difficulty",
+    ["Easy", "Normal", "Hard"],
+    index=1,
+    key="difficulty_selector",  # We added a key!
+    on_change=reset_on_difficulty_change  # We attached the callback!
+)
 
 def parse_guess(raw: str):
     if raw is None:
@@ -54,11 +65,6 @@ st.caption("An AI-generated guessing game. Something is off.")
 
 st.sidebar.header("Settings")
 
-difficulty = st.sidebar.selectbox(
-    "Difficulty",
-    ["Easy", "Normal", "Hard"],
-    index=1,
-)
 
 attempt_limit_map = {
     "Easy": 6,
@@ -89,8 +95,9 @@ if "history" not in st.session_state:
 
 st.subheader("Make a guess")
 
+# FIX: Replaced the hardcoded "1 and 100" string with dynamic low and high variables based on AI suggestion.
 st.info(
-    f"Guess a number between 1 and 100. "
+    f"Guess a number between {low} and {high}. "
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
 
@@ -139,6 +146,7 @@ if submit:
         st.session_state.history.append(guess_int)
 
 # FIXME: This string conversion breaks the math comparison!
+# FIX: Removed buggy even/odd string conversion logic using Copilot Inline Chat so the math works correctly.
         outcome, message = check_guess(guess_int, st.session_state.secret)
 
         if show_hint:
