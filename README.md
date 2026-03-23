@@ -26,16 +26,17 @@ It wrote the code, ran away, and now the game is unplayable.
 ## 📝 Document Your Experience
 
 - Describe the game's purpose.
-The game's purpose is to find the secret number by using the hints provided. The range between which the number can be found is already given and depends on the hardness of the level. The user has 5 attempts to guess the number.
+The game was a simple guess game in which the user had to guess the secret number between a given range of numbers (based on the difficulty of the game set) using the hints provided after each guess.
+
 - Detail which bugs you found.
-The bugs I found in the game are:
-1. The range between which the number can be found should depend on the level but currently it is  
-- Explain what fixes you applied.
+1. The hints were backwards. If the secret number is lower than the guessed number, the hint tells the user to go higher and vice versa.
+2. When the user changes the difficulty of the game, the range is supposed to change but it doesn't actually change in the game. 
+3. If the user clicks "Submit Guess" without typing anything into the box, the user loses an attempt.
 
 
 ## 📸 Demo
 
-- [ ] [Insert a screenshot of your fixed, winning game here]
+![Winning Game Demo](./screenshot.png)
 
 
 ## 🚀 Stretch Features
