@@ -2,6 +2,26 @@ def get_range_for_difficulty(difficulty: str):
     """Return (low, high) inclusive range for a given difficulty."""
     raise NotImplementedError("Refactor this function from app.py into logic_utils.py")
 
+# FIXME: The higher/lower hints are backwards here.
+def check_guess(guess, secret):
+    """
+    Compare guess to secret and return (outcome, message).
+    """
+    if guess == secret:
+        return "Win", "🎉 Correct!"
+
+    try:
+        if guess > secret:
+            return "Too High", "📉 Go LOWER!"  # Fixed hint!
+        else:
+            return "Too Low", "📈 Go HIGHER!"  # Fixed hint!
+    except TypeError:
+        g = str(guess)
+        if g == secret:
+            return "Win", "🎉 Correct!"
+        if g > secret:
+            return "Too High", "📉 Go LOWER!"  # Fixed hint!
+        return "Too Low", "📈 Go HIGHER!"      # Fixed hint!
 
 def parse_guess(raw: str):
     """
