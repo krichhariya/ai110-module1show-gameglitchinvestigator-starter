@@ -36,8 +36,7 @@ The game was a simple guess game in which the user had to guess the secret numbe
 
 ## 📸 Demo
 
-![Winning Game Demo](./screenshot.png)
-
+![Winning Game Demo](./AI110_Game.png)
 
 ## 🚀 Stretch Features
 
