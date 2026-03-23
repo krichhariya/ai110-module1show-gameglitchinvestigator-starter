@@ -25,9 +25,13 @@ It wrote the code, ran away, and now the game is unplayable.
 
 ## 📝 Document Your Experience
 
-- [ ] Describe the game's purpose.
-- [ ] Detail which bugs you found.
-- [ ] Explain what fixes you applied.
+- Describe the game's purpose.
+The game's purpose is to find the secret number by using the hints provided. The range between which the number can be found is already given and depends on the hardness of the level. The user has 5 attempts to guess the number.
+- Detail which bugs you found.
+The bugs I found in the game are:
+1. The range between which the number can be found should depend on the level but currently it is  
+- Explain what fixes you applied.
+
 
 ## 📸 Demo
 

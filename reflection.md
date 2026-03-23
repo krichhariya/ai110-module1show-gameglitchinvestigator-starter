@@ -5,9 +5,13 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 ## 1. What was broken when you started?
 
 - What did the game look like the first time you ran it?
+The game was a simple guess game in which the user had to guess the secret number between a given range of numbers (based on the difficulty of the game set) using the hints provided after each guess. 
+
 - List at least two concrete bugs you noticed at the start  
   (for example: "the hints were backwards").
-
+1. The hints were backwards. If the secret number is lower than the guessed number, the hint tells the user to go higher and vice versa.
+2. When the user changes the difficulty of the game, the range is supposed to change but it doesn't actually change in the game. 
+3. The number of attempts allowed for the hard difficulty level is 5 which is less than the number of attempts in the normal difficulty level.
 ---
 
 ## 2. How did you use AI as a teammate?
